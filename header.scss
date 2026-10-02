@@ -1,0 +1,119 @@
+@use "sass:color";
+
+// -------------------------
+// Variables
+// -------------------------
+$color-blue-light: #0077cc;
+$color-header-bg: antiquewhite;
+$color-footer-bg: #0077cc;
+$transition-speed: 0.5s;
+
+// -------------------------
+// Mixin pentru transition
+// -------------------------
+@mixin transition($properties...) {
+  transition: $properties $transition-speed ease-in-out;
+}
+
+// -------------------------
+// Fade-in animation
+// -------------------------
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// -------------------------
+// Header
+// -------------------------
+header {
+  background-color: $color-header-bg;
+  padding: 1rem;
+  animation: fade-in $transition-speed ease-in-out forwards;
+
+  .header__title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    @include transition(background-color);
+
+    &:hover {
+      background-color: color.scale($color-blue-light, $lightness: 40%);
+      cursor: pointer;
+    }
+  }
+
+  .nav__link {
+    color: #041c02;
+    font-weight: 500;
+    font-size: 1.25rem;
+    text-decoration: none;
+    @include transition(color);
+
+    &:hover,
+    &:focus {
+      color: $color-blue-light;
+    }
+  }
+}
+
+// -------------------------
+// Footer
+// -------------------------
+footer {
+  background-color: $color-footer-bg;
+  color: #fff;
+  padding: 1.5rem;
+  animation: fade-in $transition-speed ease-in-out forwards;
+
+  .footer__text {
+    width: 200px;
+    background-color: $color-footer-bg;
+    padding: 0.5rem 1rem;
+    @include transition(width, background-color);
+
+    &:hover {
+      width: 300px;
+      background-color: color.adjust($color-footer-bg, $lightness: -10%);
+    }
+  }
+
+  .footer__link {
+    margin-left: 1rem;
+    color: #fff;
+    text-decoration: none;
+    @include transition(color, background-color);
+
+    &:hover {
+      background-color: red;
+      color: white;
+    }
+  }
+}
+
+// -------------------------
+// Extra utility class
+// -------------------------
+.center {
+  @include transition(background-color);
+
+  &:hover {
+    background-color: green;
+    cursor: pointer;
+  }
+}
+
+.posts__title {
+  margin-left: 1rem;
+  color: #fff;
+  text-decoration: none;
+  @include transition(color, background-color);
+
+  &:hover {
+    background-color: red;
+    color: white;
+  }
+}

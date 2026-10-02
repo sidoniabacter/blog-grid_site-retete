@@ -1,0 +1,15 @@
+{
+  "name": "blog-grid",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "compile": "sass --watch --no-source-map header.scss style.css"
+  },
+  "dependencies": {
+    "sass": "^1.93.3"
+  }
+}
